@@ -1,5 +1,7 @@
 #make sure kele class has access to httparty
 require 'httparty'
+#make sure kele class has access to json
+require 'json'
 
 class Kele
   #includes the httparty libary class as a module, gives access to httparty methods like "post" think inheritance-ish
@@ -14,6 +16,11 @@ class Kele
     raise 'YOU SHALL NOT PASS' if response.code == 404
     #returns JSON key called auth_token and assigns it to @auth_token
     @auth_token = response["auth_token"]
+  end
+
+  def get_me
+    response = self.class.get("https://www.bloc.io/api/v1/users/me", headers: { "authorization" => @auth_token })
+    JSON.parse(response.body)
   end
 
   private
