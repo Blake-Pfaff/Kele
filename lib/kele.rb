@@ -19,18 +19,17 @@ class Kele
   end
 
   def get_me
-    response = self.class.get(me_url, headers: { "authorization" => @auth_token })
+    response = self.class.get(api_url("me"), headers: { "authorization" => @auth_token })
     JSON.parse(response.body)
   end
 
   private
-
-    def me_url
-      "https://www.bloc.io/api/v1/users/me"
-    end
-
     #sets the api_url used in init method
     def api_url(endpoint)
-      "https://www.bloc.io/api/v1/#{endpoint}"
+      if endpoint == "sessions"
+        "https://www.bloc.io/api/v1/#{endpoint}"
+      else
+      "https://www.bloc.io/api/v1/users/me"
+      end
     end
 end
