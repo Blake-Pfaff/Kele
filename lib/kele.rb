@@ -2,13 +2,13 @@
 require 'httparty'
 #make sure kele class has access to json
 require 'json'
-require_relative "roadmap.rb"
+require_relative 'roadmap'
 
 
 class Kele
   #includes the httparty libary class as a module, gives access to httparty methods like "post" think inheritance-ish
   include HTTParty
-
+  include Roadmap
 
   base_uri 'https://www.bloc.io/api/v1'
   #called when "new" method is used.  Passes the email and PW in from the input
@@ -31,6 +31,4 @@ class Kele
     response = self.class.get("/mentors/#{mentor_id}/student_availability", headers: { "authorization" => @auth_token })
     JSON.parse(response.body)
   end
-
-
 end
