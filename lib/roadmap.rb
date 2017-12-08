@@ -14,4 +14,7 @@ module Roadmap
     response = self.class.get("/checkpoints/#{checkpoint_id}", headers: { "authorization" => @auth_token })
     JSON.parse(response.body)
   end
+
+
+
 end
