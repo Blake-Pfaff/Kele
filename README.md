@@ -1,6 +1,6 @@
 # Kele Gem
 
-This is a gem made for Rails to interface with the boot camp Blocs UI.  
+This is a API made for Rails to interface with the boot camp Blocs UI.  
 
 ## Getting Started
 
